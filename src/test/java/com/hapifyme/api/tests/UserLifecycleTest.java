@@ -1,22 +1,20 @@
 package com.hapifyme.api.tests;
 
 import io.restassured.http.ContentType;
+import io.restassured.response.Response;
 
 import com.hapifyme.api.models.*;
 import com.hapifyme.api.utils.*;
 
-//import org.testng.IReporter;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
-//import java.util.GregorianCalendar;
-
 import static io.restassured.RestAssured.given;
-//import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 import static org.hamcrest.Matchers.containsString;
 
 
-public class UserLifecycleTest {
+public class UserLifecycleTest extends BaseTest {
 
     private String email;
     private final String password = "Test1234!";
@@ -35,8 +33,7 @@ public class UserLifecycleTest {
         request.setEmail(email);
         request.setPassword(password);
 
-        System.out.println("Step 1");
-        System.out.println("Starting registration user with email:  " + email);
+        logger.info("Step 1: Starting registration user with email:  " + email + " and password: " + password);
 
         RegisterResponse response =
                 given()
@@ -53,7 +50,6 @@ public class UserLifecycleTest {
         apiKey = response.getApiKey();
         userid = response.getUserId();
         usermane = response.getUsername();
-        System.out.println("User created with: \n ID: " + userid + " \n username: " + usermane + "\n api key: " + apiKey );
 
         String statusUrl = ConfigManager.CONFIRM_STATUS + email;
         ApiPoller.pollForStatus(
@@ -62,31 +58,40 @@ public class UserLifecycleTest {
                 apiKey
         );
 
+        logger.debug("User created with");
+        logger.debug("ID: " + userid);
+        logger.debug("username: " + usermane);
+        logger.debug("api key: " + apiKey);
     }
 
     @Test (priority = 2)
-        public void waitForConfirmation() {
+    public void waitForConfirmation() {
         String confirmUrl = ConfigManager.CONFIRM_EMAIL + apiKey;
 
-        System.out.println("\n Step 2");
-        System.out.println("Start Confirmation email: " + email);
+        logger.info("Step 2: Start Confirmation email: " + email);
 
-        given()
-                .header("Authorization", apiKey)
-                .accept(ContentType.JSON)
-                .when()
-                .get(confirmUrl)
-                .then()
-                .statusCode(200);
+        Response response = given()
+                                .header("Authorization", apiKey)
+                                .accept(ContentType.JSON)
+                                .when()
+                                .get(confirmUrl);
 
-        System.out.println("Email confirmed!");
+        int statusCode = response.getStatusCode();
+
+        if (statusCode == 200)
+        {
+            logger.debug("Email confirmed!");
+        }
+        else
+        {
+            logger.error("Email in not confirmed! Status code is " + statusCode);
+        }
     }
 
     @Test (priority = 3)
         public void login() {
 
-        System.out.println("\n Step 3");
-        System.out.println("Logging in the system with user: " + email + " and password: " + password);
+        logger.info("Step 3: Logging in the system with user: " + email + " and password: " + password);
 
         LoginRequest loginBody = new LoginRequest(usermane, password);
         LoginResponse loginResponse =
@@ -103,7 +108,7 @@ public class UserLifecycleTest {
 
        bearerToken = loginResponse.getToken();
 
-        System.out.println("Logged in successfully!" + "\n Bearer Token is: " + bearerToken);
+        logger.debug("Logged in successfully!" + "\n Bearer Token is: " + bearerToken);
 
     }
 
@@ -111,8 +116,7 @@ public class UserLifecycleTest {
     public void readProfile() {
         String profileUrl = ConfigManager.GET_PROFILE + userid;
 
-        System.out.println("\n Step 4");
-        System.out.println("Validation of data introduced in registration step for user with ID: " + userid);
+        logger.info("Step 4: Validation of data introduced in registration step for user with ID: " + userid);
 
         given()
                 .header("Authorization", apiKey)
@@ -126,18 +130,15 @@ public class UserLifecycleTest {
                 .body("user.email", equalTo(email))
                 .body("user.username", equalTo(usermane))
                 .body("user.id", equalTo(userid));
-                //.log().all();
 
-
-        System.out.println("Data validated successfully!");
+        logger.debug("Data validated successfully!");
     }
 
     @Test (priority = 5)
     public void updateProfile() {
         String profileUrl = ConfigManager.GET_PROFILE + userid;
 
-        System.out.println("\n Step 5");
-        System.out.println("Profile Update");
+        logger.info("Step 5: Profile Update");
 
         UpdateProfileRequest updateBody = new UpdateProfileRequest(userid, "UpdatedName",
                 "UpdatedLast", "updated@updated.com", "updated.jpg");
@@ -157,19 +158,17 @@ public class UserLifecycleTest {
                 .body("message", containsString("successfully"));
                 //.log().all();
 
-        System.out.println("Updated Successfully! New data is: "
-                + "\n name: " + updateBody.getFirstName()
-                + "\n last name: " + updateBody.getLastName()
-                + "\n email: " + updateBody.getEmail() );
+        logger.debug("Updated Successfully! New data is: ");
+        logger.debug("name: " + updateBody.getFirstName());
+        logger.debug("last name: " + updateBody.getLastName());
+        logger.debug("email: " + updateBody.getEmail());
     }
 
     @Test(priority = 6)
     public void deleteProfile() {
 
-
-    System.out.println("\n Step 6");
-    System.out.println("Profile Delete. Negative Check");
-    System.out.println("Bearer Token is: " + bearerToken);
+    logger.info("Step 6: Profile Delete. Negative Check");
+    logger.info("Bearer Token is: " + bearerToken);
 
     given()
             .baseUri(ConfigManager.BASE_URL)
@@ -182,9 +181,9 @@ public class UserLifecycleTest {
             .body("status", equalTo("success"))
             .body("message", containsString("deleted"));
 
-        System.out.println("\nDelete Done. User was deleted.");
+        logger.debug("Delete Done. User was deleted.");
 
-        System.out.println("\nStarting negaitve check...");
+        logger.info("Step7: Starting negaitve check...");
 
         String profileUrl = ConfigManager.GET_PROFILE + userid;
         given()
@@ -196,10 +195,7 @@ public class UserLifecycleTest {
                 .body("status", equalTo("error"))
                 .body("message", containsString("not found"));
 
-        System.out.println("\nNegaitve check Done. User doesn't exist anymore");
-
-
-
+        logger.debug("Negaitve check Done. User doesn't exist anymore");
 
     }
   }

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <Appenders>
+        <!-- Configurare pentru Consolă (ce vedem în IDE) -->
+        <Console name="Console" target="SYSTEM_OUT">
+            <!-- Pattern: Ora [Thread] Nivel Clasa - Mesaj -->
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </Console>
+
+        <!-- Configurare pentru Fișier (ce rămâne salvat) -->
+        <File name="File" fileName="logs/test_execution.log" append="true">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n"/>
+        </File>
+    </Appenders>
+
+    <Loggers>
+        <!-- Setăm nivelul global la INFO (DEBUG și TRACE vor fi ignorate) -->
+        <Root level="DEBUG">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="File"/>
+        </Root>
+    </Loggers>
+</Configuration>
