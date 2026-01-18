@@ -2,6 +2,8 @@ package com.hapifyme.api.tests;
 
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+import io.qameta.allure.*;
+import io.restassured.RestAssured;
 
 import com.hapifyme.api.models.*;
 import com.hapifyme.api.utils.*;
@@ -13,6 +15,8 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
 import static org.hamcrest.Matchers.containsString;
 
+@Epic("hapifyMe Project")
+@Feature("e2e User LifeCycle module")
 
 public class UserLifecycleTest extends BaseTest {
 
@@ -20,10 +24,14 @@ public class UserLifecycleTest extends BaseTest {
     private final String password = "Test1234!";
     private String apiKey;
     private String userid;
-    private String usermane;
+    private String username;
     private String bearerToken;
 
-    @Test (priority = 1)
+    @Test (priority = 1, description = "Register new user")
+    @Severity(SeverityLevel.BLOCKER)
+    @Description("This test registrates a new user and returns apiKey, user ID and user Name for the next steps ")
+    @Story("JIRA-01. I want to create a new user, log in and delete it")
+    @Step("username with email generated and password={1}")
     public void registerUser() {
         email = DataGenerator.generateUniqueEmail();
 
@@ -49,7 +57,7 @@ public class UserLifecycleTest extends BaseTest {
 
         apiKey = response.getApiKey();
         userid = response.getUserId();
-        usermane = response.getUsername();
+        username = response.getUsername();
 
         String statusUrl = ConfigManager.CONFIRM_STATUS + email;
         ApiPoller.pollForStatus(
@@ -60,11 +68,12 @@ public class UserLifecycleTest extends BaseTest {
 
         logger.debug("User created with");
         logger.debug("ID: " + userid);
-        logger.debug("username: " + usermane);
+        logger.debug("username: " + username);
         logger.debug("api key: " + apiKey);
     }
 
     @Test (priority = 2)
+    @Step("Step 2: Confirm email for {0}")
     public void waitForConfirmation() {
         String confirmUrl = ConfigManager.CONFIRM_EMAIL + apiKey;
 
@@ -89,11 +98,12 @@ public class UserLifecycleTest extends BaseTest {
     }
 
     @Test (priority = 3)
+    @Step("Step 3: Login with username={0}")
         public void login() {
 
         logger.info("Step 3: Logging in the system with user: " + email + " and password: " + password);
 
-        LoginRequest loginBody = new LoginRequest(usermane, password);
+        LoginRequest loginBody = new LoginRequest(username, password);
         LoginResponse loginResponse =
                  given()
                         .baseUri(ConfigManager.BASE_URL)
@@ -113,6 +123,7 @@ public class UserLifecycleTest extends BaseTest {
     }
 
     @Test (priority = 4)
+    @Step("Step 4: Read Profile for userId={0}")
     public void readProfile() {
         String profileUrl = ConfigManager.GET_PROFILE + userid;
 
@@ -121,20 +132,20 @@ public class UserLifecycleTest extends BaseTest {
         given()
                 .header("Authorization", apiKey)
                 .accept(ContentType.JSON)
-                //.log().all()
                 .when()
                 .get(profileUrl)
                 .then()
                 .statusCode(200)
                 .body("status", equalTo("success"))
                 .body("user.email", equalTo(email))
-                .body("user.username", equalTo(usermane))
+                .body("user.username", equalTo(username))
                 .body("user.id", equalTo(userid));
 
         logger.debug("Data validated successfully!");
     }
 
     @Test (priority = 5)
+    @Step("Step 5: Update Profile for userID={0}")
     public void updateProfile() {
         String profileUrl = ConfigManager.GET_PROFILE + userid;
 
@@ -156,7 +167,6 @@ public class UserLifecycleTest extends BaseTest {
                 .statusCode(200)
                 .body("status", equalTo("success"))
                 .body("message", containsString("successfully"));
-                //.log().all();
 
         logger.debug("Updated Successfully! New data is: ");
         logger.debug("name: " + updateBody.getFirstName());
@@ -165,6 +175,7 @@ public class UserLifecycleTest extends BaseTest {
     }
 
     @Test(priority = 6)
+    @Step("Step 6: Delete Profile with Bearer token and make negative check for userId={0}")
     public void deleteProfile() {
 
     logger.info("Step 6: Profile Delete. Negative Check");
@@ -198,5 +209,12 @@ public class UserLifecycleTest extends BaseTest {
         logger.debug("Negaitve check Done. User doesn't exist anymore");
 
     }
+
+    // Metodă ajutătoare pentru a atașa text (JSON, Logs) în raportul Allure
+    @Attachment(value = "{0}", type = "text/plain")
+    public String attachTextToReport(String attachmentName, String message) {
+        return message; // Allure ia valoarea returnată și o pune în raport
+    }
+
   }
 

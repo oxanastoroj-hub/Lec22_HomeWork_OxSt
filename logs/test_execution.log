@@ -480,3 +480,208 @@
 2026-01-18 19:04:22 INFO  BaseTest:186 - Step7: Starting negaitve check...
 2026-01-18 19:04:22 DEBUG BaseTest:198 - Negaitve check Done. User doesn't exist anymore
 2026-01-18 19:04:22 DEBUG BaseTest:42 - Context curățat pentru Thread ID: 3
+2026-01-18 19:34:02 INFO  BaseTest:29 - ========================================
+2026-01-18 19:34:02 INFO  BaseTest:30 - Începere Test: registerUser
+2026-01-18 19:34:02 INFO  BaseTest:32 - Running on Thread ID: 3
+2026-01-18 19:34:02 INFO  BaseTest:33 - Base URL: https://test.hapifyme.com
+2026-01-18 19:34:02 INFO  BaseTest:34 - ========================================
+2026-01-18 19:34:02 INFO  BaseTest:44 - Starting registration user with email:  test_user1768757642477@gmail.com and password: Test1234!
+2026-01-18 19:34:06 INFO  ApiPoller:23 - Start Polling for URL: https://test.hapifyme.com/api/user/retrieve_token.php?username_or_email=test_user1768757642477@gmail.com
+2026-01-18 19:34:06 INFO  ApiPoller:24 - Expecting status: success
+2026-01-18 19:34:06 INFO  ApiPoller:25 - ............................
+2026-01-18 19:34:08 DEBUG ApiPoller:42 - 
+ Status confirmed: success
+2026-01-18 19:34:08 DEBUG BaseTest:69 - User created with
+2026-01-18 19:34:08 DEBUG BaseTest:70 - ID: 19986
+2026-01-18 19:34:08 DEBUG BaseTest:71 - username: oxana_storoj_61
+2026-01-18 19:34:08 DEBUG BaseTest:72 - api key: 7d970e8072860894230ca596e7a7f0c65694f236bb7c7652277698b4d723f98c
+2026-01-18 19:34:08 DEBUG BaseTest:42 - Context curățat pentru Thread ID: 3
+2026-01-18 19:34:08 INFO  BaseTest:29 - ========================================
+2026-01-18 19:34:08 INFO  BaseTest:30 - Începere Test: waitForConfirmation
+2026-01-18 19:34:08 INFO  BaseTest:32 - Running on Thread ID: 3
+2026-01-18 19:34:08 INFO  BaseTest:33 - Base URL: https://test.hapifyme.com
+2026-01-18 19:34:08 INFO  BaseTest:34 - ========================================
+2026-01-18 19:34:08 INFO  BaseTest:79 - Step 2: Start Confirmation email: test_user1768757642477@gmail.com
+2026-01-18 19:34:08 DEBUG BaseTest:91 - Email confirmed!
+2026-01-18 19:34:08 DEBUG BaseTest:42 - Context curățat pentru Thread ID: 3
+2026-01-18 19:34:08 INFO  BaseTest:29 - ========================================
+2026-01-18 19:34:08 INFO  BaseTest:30 - Începere Test: login
+2026-01-18 19:34:08 INFO  BaseTest:32 - Running on Thread ID: 3
+2026-01-18 19:34:08 INFO  BaseTest:33 - Base URL: https://test.hapifyme.com
+2026-01-18 19:34:08 INFO  BaseTest:34 - ========================================
+2026-01-18 19:34:08 INFO  BaseTest:102 - Step 3: Logging in the system with user: test_user1768757642477@gmail.com and password: Test1234!
+2026-01-18 19:34:10 DEBUG BaseTest:119 - Logged in successfully!
+ Bearer Token is: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJoYXBpZnlNZSIsImF1ZCI6ImhhcGlmeU1lVXNlciIsImlhdCI6MTc2ODc1NzY1MCwiZXhwIjoxNzY4NzYxMjUwLCJ1c2VyX2lkIjoiMTk5ODYiLCJ1c2VybmFtZSI6Im94YW5hX3N0b3Jval82MSJ9.PDWatYdFT5fUJqWysDjCTZ3ruOUv-IrAEtHEbBJxEps
+2026-01-18 19:34:10 DEBUG BaseTest:42 - Context curățat pentru Thread ID: 3
+2026-01-18 19:34:10 INFO  BaseTest:29 - ========================================
+2026-01-18 19:34:10 INFO  BaseTest:30 - Începere Test: readProfile
+2026-01-18 19:34:10 INFO  BaseTest:32 - Running on Thread ID: 3
+2026-01-18 19:34:10 INFO  BaseTest:33 - Base URL: https://test.hapifyme.com
+2026-01-18 19:34:10 INFO  BaseTest:34 - ========================================
+2026-01-18 19:34:10 INFO  BaseTest:127 - Step 4: Validation of data introduced in registration step for user with ID: 19986
+2026-01-18 19:34:10 DEBUG BaseTest:142 - Data validated successfully!
+2026-01-18 19:34:10 DEBUG BaseTest:42 - Context curățat pentru Thread ID: 3
+2026-01-18 19:34:10 INFO  BaseTest:29 - ========================================
+2026-01-18 19:34:10 INFO  BaseTest:30 - Începere Test: updateProfile
+2026-01-18 19:34:10 INFO  BaseTest:32 - Running on Thread ID: 3
+2026-01-18 19:34:10 INFO  BaseTest:33 - Base URL: https://test.hapifyme.com
+2026-01-18 19:34:10 INFO  BaseTest:34 - ========================================
+2026-01-18 19:34:10 INFO  BaseTest:149 - Step 5: Profile Update
+2026-01-18 19:34:10 DEBUG BaseTest:169 - Updated Successfully! New data is: 
+2026-01-18 19:34:10 DEBUG BaseTest:170 - name: UpdatedName
+2026-01-18 19:34:10 DEBUG BaseTest:171 - last name: UpdatedLast
+2026-01-18 19:34:10 DEBUG BaseTest:172 - email: updated@updated.com
+2026-01-18 19:34:10 DEBUG BaseTest:42 - Context curățat pentru Thread ID: 3
+2026-01-18 19:34:10 INFO  BaseTest:29 - ========================================
+2026-01-18 19:34:10 INFO  BaseTest:30 - Începere Test: deleteProfile
+2026-01-18 19:34:10 INFO  BaseTest:32 - Running on Thread ID: 3
+2026-01-18 19:34:10 INFO  BaseTest:33 - Base URL: https://test.hapifyme.com
+2026-01-18 19:34:10 INFO  BaseTest:34 - ========================================
+2026-01-18 19:34:10 INFO  BaseTest:178 - Step 6: Profile Delete. Negative Check
+2026-01-18 19:34:10 INFO  BaseTest:179 - Bearer Token is: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJoYXBpZnlNZSIsImF1ZCI6ImhhcGlmeU1lVXNlciIsImlhdCI6MTc2ODc1NzY1MCwiZXhwIjoxNzY4NzYxMjUwLCJ1c2VyX2lkIjoiMTk5ODYiLCJ1c2VybmFtZSI6Im94YW5hX3N0b3Jval82MSJ9.PDWatYdFT5fUJqWysDjCTZ3ruOUv-IrAEtHEbBJxEps
+2026-01-18 19:34:10 DEBUG BaseTest:192 - Delete Done. User was deleted.
+2026-01-18 19:34:10 INFO  BaseTest:194 - Step7: Starting negaitve check...
+2026-01-18 19:34:10 DEBUG BaseTest:206 - Negaitve check Done. User doesn't exist anymore
+2026-01-18 19:34:10 DEBUG BaseTest:42 - Context curățat pentru Thread ID: 3
+2026-01-18 19:38:16 INFO  BaseTest:29 - ========================================
+2026-01-18 19:38:16 INFO  BaseTest:30 - Începere Test: registerUser
+2026-01-18 19:38:16 INFO  BaseTest:32 - Running on Thread ID: 3
+2026-01-18 19:38:16 INFO  BaseTest:33 - Base URL: https://test.hapifyme.com
+2026-01-18 19:38:16 INFO  BaseTest:34 - ========================================
+2026-01-18 19:38:16 INFO  BaseTest:44 - Step 1: Starting registration user with email:  test_user1768757896798@gmail.com and password: Test1234!
+2026-01-18 19:38:20 INFO  ApiPoller:23 - Start Polling for URL: https://test.hapifyme.com/api/user/retrieve_token.php?username_or_email=test_user1768757896798@gmail.com
+2026-01-18 19:38:20 INFO  ApiPoller:24 - Expecting status: success
+2026-01-18 19:38:20 INFO  ApiPoller:25 - ............................
+2026-01-18 19:38:22 DEBUG ApiPoller:42 - 
+ Status confirmed: success
+2026-01-18 19:38:22 DEBUG BaseTest:69 - User created with
+2026-01-18 19:38:22 DEBUG BaseTest:70 - ID: 19987
+2026-01-18 19:38:22 DEBUG BaseTest:71 - username: oxana_storoj_61
+2026-01-18 19:38:22 DEBUG BaseTest:72 - api key: d9588a93885c7df9bec840dedd51224a3f24ee00ed60c6aef175a95bc75ef385
+2026-01-18 19:38:22 DEBUG BaseTest:42 - Context curățat pentru Thread ID: 3
+2026-01-18 19:42:44 INFO  BaseTest:29 - ========================================
+2026-01-18 19:42:44 INFO  BaseTest:30 - Începere Test: registerUser
+2026-01-18 19:42:44 INFO  BaseTest:32 - Running on Thread ID: 3
+2026-01-18 19:42:44 INFO  BaseTest:33 - Base URL: https://test.hapifyme.com
+2026-01-18 19:42:44 INFO  BaseTest:34 - ========================================
+2026-01-18 19:42:44 INFO  BaseTest:44 - Step 1: Starting registration user with email:  test_user1768758164548@gmail.com and password: Test1234!
+2026-01-18 19:42:47 INFO  ApiPoller:23 - Start Polling for URL: https://test.hapifyme.com/api/user/retrieve_token.php?username_or_email=test_user1768758164548@gmail.com
+2026-01-18 19:42:47 INFO  ApiPoller:24 - Expecting status: success
+2026-01-18 19:42:47 INFO  ApiPoller:25 - ............................
+2026-01-18 19:42:50 DEBUG ApiPoller:42 - 
+ Status confirmed: success
+2026-01-18 19:42:50 DEBUG BaseTest:69 - User created with
+2026-01-18 19:42:50 DEBUG BaseTest:70 - ID: 19988
+2026-01-18 19:42:50 DEBUG BaseTest:71 - username: oxana_storoj_62
+2026-01-18 19:42:50 DEBUG BaseTest:72 - api key: 62f692201241451d1a1d7ac0307cc2c948d642a66175881e6fb90f8213ecd0c7
+2026-01-18 19:42:50 DEBUG BaseTest:42 - Context curățat pentru Thread ID: 3
+2026-01-18 19:42:50 INFO  BaseTest:29 - ========================================
+2026-01-18 19:42:50 INFO  BaseTest:30 - Începere Test: waitForConfirmation
+2026-01-18 19:42:50 INFO  BaseTest:32 - Running on Thread ID: 3
+2026-01-18 19:42:50 INFO  BaseTest:33 - Base URL: https://test.hapifyme.com
+2026-01-18 19:42:50 INFO  BaseTest:34 - ========================================
+2026-01-18 19:42:50 INFO  BaseTest:80 - Step 2: Start Confirmation email: test_user1768758164548@gmail.com
+2026-01-18 19:42:50 DEBUG BaseTest:92 - Email confirmed!
+2026-01-18 19:42:50 DEBUG BaseTest:42 - Context curățat pentru Thread ID: 3
+2026-01-18 19:42:50 INFO  BaseTest:29 - ========================================
+2026-01-18 19:42:50 INFO  BaseTest:30 - Începere Test: login
+2026-01-18 19:42:50 INFO  BaseTest:32 - Running on Thread ID: 3
+2026-01-18 19:42:50 INFO  BaseTest:33 - Base URL: https://test.hapifyme.com
+2026-01-18 19:42:50 INFO  BaseTest:34 - ========================================
+2026-01-18 19:42:50 INFO  BaseTest:104 - Step 3: Logging in the system with user: test_user1768758164548@gmail.com and password: Test1234!
+2026-01-18 19:42:51 DEBUG BaseTest:121 - Logged in successfully!
+ Bearer Token is: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJoYXBpZnlNZSIsImF1ZCI6ImhhcGlmeU1lVXNlciIsImlhdCI6MTc2ODc1ODE3MSwiZXhwIjoxNzY4NzYxNzcxLCJ1c2VyX2lkIjoiMTk5ODgiLCJ1c2VybmFtZSI6Im94YW5hX3N0b3Jval82MiJ9.d6ZCSukrxXvjDqlmsDN6dd2N9S7OLb_RF10mguad03c
+2026-01-18 19:42:51 DEBUG BaseTest:42 - Context curățat pentru Thread ID: 3
+2026-01-18 19:42:51 INFO  BaseTest:29 - ========================================
+2026-01-18 19:42:51 INFO  BaseTest:30 - Începere Test: readProfile
+2026-01-18 19:42:51 INFO  BaseTest:32 - Running on Thread ID: 3
+2026-01-18 19:42:51 INFO  BaseTest:33 - Base URL: https://test.hapifyme.com
+2026-01-18 19:42:51 INFO  BaseTest:34 - ========================================
+2026-01-18 19:42:51 INFO  BaseTest:130 - Step 4: Validation of data introduced in registration step for user with ID: 19988
+2026-01-18 19:42:51 DEBUG BaseTest:145 - Data validated successfully!
+2026-01-18 19:42:51 DEBUG BaseTest:42 - Context curățat pentru Thread ID: 3
+2026-01-18 19:42:51 INFO  BaseTest:29 - ========================================
+2026-01-18 19:42:51 INFO  BaseTest:30 - Începere Test: updateProfile
+2026-01-18 19:42:51 INFO  BaseTest:32 - Running on Thread ID: 3
+2026-01-18 19:42:51 INFO  BaseTest:33 - Base URL: https://test.hapifyme.com
+2026-01-18 19:42:51 INFO  BaseTest:34 - ========================================
+2026-01-18 19:42:51 INFO  BaseTest:153 - Step 5: Profile Update
+2026-01-18 19:42:51 DEBUG BaseTest:173 - Updated Successfully! New data is: 
+2026-01-18 19:42:51 DEBUG BaseTest:174 - name: UpdatedName
+2026-01-18 19:42:51 DEBUG BaseTest:175 - last name: UpdatedLast
+2026-01-18 19:42:51 DEBUG BaseTest:176 - email: updated@updated.com
+2026-01-18 19:42:51 DEBUG BaseTest:42 - Context curățat pentru Thread ID: 3
+2026-01-18 19:42:51 INFO  BaseTest:29 - ========================================
+2026-01-18 19:42:51 INFO  BaseTest:30 - Începere Test: deleteProfile
+2026-01-18 19:42:51 INFO  BaseTest:32 - Running on Thread ID: 3
+2026-01-18 19:42:51 INFO  BaseTest:33 - Base URL: https://test.hapifyme.com
+2026-01-18 19:42:51 INFO  BaseTest:34 - ========================================
+2026-01-18 19:42:51 INFO  BaseTest:183 - Step 6: Profile Delete. Negative Check
+2026-01-18 19:42:51 INFO  BaseTest:184 - Bearer Token is: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJoYXBpZnlNZSIsImF1ZCI6ImhhcGlmeU1lVXNlciIsImlhdCI6MTc2ODc1ODE3MSwiZXhwIjoxNzY4NzYxNzcxLCJ1c2VyX2lkIjoiMTk5ODgiLCJ1c2VybmFtZSI6Im94YW5hX3N0b3Jval82MiJ9.d6ZCSukrxXvjDqlmsDN6dd2N9S7OLb_RF10mguad03c
+2026-01-18 19:42:51 DEBUG BaseTest:197 - Delete Done. User was deleted.
+2026-01-18 19:42:51 INFO  BaseTest:199 - Step7: Starting negaitve check...
+2026-01-18 19:42:51 DEBUG BaseTest:211 - Negaitve check Done. User doesn't exist anymore
+2026-01-18 19:42:51 DEBUG BaseTest:42 - Context curățat pentru Thread ID: 3
+2026-01-18 20:10:16 INFO  BaseTest:29 - ========================================
+2026-01-18 20:10:16 INFO  BaseTest:30 - Începere Test: registerUser
+2026-01-18 20:10:16 INFO  BaseTest:32 - Running on Thread ID: 3
+2026-01-18 20:10:16 INFO  BaseTest:33 - Base URL: https://test.hapifyme.com
+2026-01-18 20:10:16 INFO  BaseTest:34 - ========================================
+2026-01-18 20:10:16 INFO  BaseTest:44 - Step 1: Starting registration user with email:  test_user1768759816866@gmail.com and password: Test1234!
+2026-01-18 20:10:20 INFO  ApiPoller:23 - Start Polling for URL: https://test.hapifyme.com/api/user/retrieve_token.php?username_or_email=test_user1768759816866@gmail.com
+2026-01-18 20:10:20 INFO  ApiPoller:24 - Expecting status: success
+2026-01-18 20:10:20 INFO  ApiPoller:25 - ............................
+2026-01-18 20:10:23 DEBUG ApiPoller:42 - 
+ Status confirmed: success
+2026-01-18 20:10:23 DEBUG BaseTest:69 - User created with
+2026-01-18 20:10:23 DEBUG BaseTest:70 - ID: 19989
+2026-01-18 20:10:23 DEBUG BaseTest:71 - username: oxana_storoj_62
+2026-01-18 20:10:23 DEBUG BaseTest:72 - api key: c7a40f322505010ee3f574b04efdac57a263a24be0bab863694d186a1697b578
+2026-01-18 20:10:23 DEBUG BaseTest:42 - Context curățat pentru Thread ID: 3
+2026-01-18 20:10:23 INFO  BaseTest:29 - ========================================
+2026-01-18 20:10:23 INFO  BaseTest:30 - Începere Test: waitForConfirmation
+2026-01-18 20:10:23 INFO  BaseTest:32 - Running on Thread ID: 3
+2026-01-18 20:10:23 INFO  BaseTest:33 - Base URL: https://test.hapifyme.com
+2026-01-18 20:10:23 INFO  BaseTest:34 - ========================================
+2026-01-18 20:10:23 INFO  BaseTest:80 - Step 2: Start Confirmation email: test_user1768759816866@gmail.com
+2026-01-18 20:10:23 DEBUG BaseTest:92 - Email confirmed!
+2026-01-18 20:10:23 DEBUG BaseTest:42 - Context curățat pentru Thread ID: 3
+2026-01-18 20:10:23 INFO  BaseTest:29 - ========================================
+2026-01-18 20:10:23 INFO  BaseTest:30 - Începere Test: login
+2026-01-18 20:10:23 INFO  BaseTest:32 - Running on Thread ID: 3
+2026-01-18 20:10:23 INFO  BaseTest:33 - Base URL: https://test.hapifyme.com
+2026-01-18 20:10:23 INFO  BaseTest:34 - ========================================
+2026-01-18 20:10:23 INFO  BaseTest:104 - Step 3: Logging in the system with user: test_user1768759816866@gmail.com and password: Test1234!
+2026-01-18 20:10:24 DEBUG BaseTest:121 - Logged in successfully!
+ Bearer Token is: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJoYXBpZnlNZSIsImF1ZCI6ImhhcGlmeU1lVXNlciIsImlhdCI6MTc2ODc1OTgyNCwiZXhwIjoxNzY4NzYzNDI0LCJ1c2VyX2lkIjoiMTk5ODkiLCJ1c2VybmFtZSI6Im94YW5hX3N0b3Jval82MiJ9.yU1AwYoRFl-B21wpXETtp84_Q30wlmXikaTLYyvVU-4
+2026-01-18 20:10:24 DEBUG BaseTest:42 - Context curățat pentru Thread ID: 3
+2026-01-18 20:10:24 INFO  BaseTest:29 - ========================================
+2026-01-18 20:10:24 INFO  BaseTest:30 - Începere Test: readProfile
+2026-01-18 20:10:24 INFO  BaseTest:32 - Running on Thread ID: 3
+2026-01-18 20:10:24 INFO  BaseTest:33 - Base URL: https://test.hapifyme.com
+2026-01-18 20:10:24 INFO  BaseTest:34 - ========================================
+2026-01-18 20:10:24 INFO  BaseTest:130 - Step 4: Validation of data introduced in registration step for user with ID: 19989
+2026-01-18 20:10:24 DEBUG BaseTest:144 - Data validated successfully!
+2026-01-18 20:10:24 DEBUG BaseTest:42 - Context curățat pentru Thread ID: 3
+2026-01-18 20:10:24 INFO  BaseTest:29 - ========================================
+2026-01-18 20:10:24 INFO  BaseTest:30 - Începere Test: updateProfile
+2026-01-18 20:10:24 INFO  BaseTest:32 - Running on Thread ID: 3
+2026-01-18 20:10:24 INFO  BaseTest:33 - Base URL: https://test.hapifyme.com
+2026-01-18 20:10:24 INFO  BaseTest:34 - ========================================
+2026-01-18 20:10:24 INFO  BaseTest:152 - Step 5: Profile Update
+2026-01-18 20:10:24 DEBUG BaseTest:171 - Updated Successfully! New data is: 
+2026-01-18 20:10:24 DEBUG BaseTest:172 - name: UpdatedName
+2026-01-18 20:10:24 DEBUG BaseTest:173 - last name: UpdatedLast
+2026-01-18 20:10:24 DEBUG BaseTest:174 - email: updated@updated.com
+2026-01-18 20:10:24 DEBUG BaseTest:42 - Context curățat pentru Thread ID: 3
+2026-01-18 20:10:24 INFO  BaseTest:29 - ========================================
+2026-01-18 20:10:24 INFO  BaseTest:30 - Începere Test: deleteProfile
+2026-01-18 20:10:24 INFO  BaseTest:32 - Running on Thread ID: 3
+2026-01-18 20:10:24 INFO  BaseTest:33 - Base URL: https://test.hapifyme.com
+2026-01-18 20:10:24 INFO  BaseTest:34 - ========================================
+2026-01-18 20:10:24 INFO  BaseTest:181 - Step 6: Profile Delete. Negative Check
+2026-01-18 20:10:24 INFO  BaseTest:182 - Bearer Token is: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJoYXBpZnlNZSIsImF1ZCI6ImhhcGlmeU1lVXNlciIsImlhdCI6MTc2ODc1OTgyNCwiZXhwIjoxNzY4NzYzNDI0LCJ1c2VyX2lkIjoiMTk5ODkiLCJ1c2VybmFtZSI6Im94YW5hX3N0b3Jval82MiJ9.yU1AwYoRFl-B21wpXETtp84_Q30wlmXikaTLYyvVU-4
+2026-01-18 20:10:24 DEBUG BaseTest:195 - Delete Done. User was deleted.
+2026-01-18 20:10:24 INFO  BaseTest:197 - Step7: Starting negaitve check...
+2026-01-18 20:10:24 DEBUG BaseTest:209 - Negaitve check Done. User doesn't exist anymore
+2026-01-18 20:10:24 DEBUG BaseTest:42 - Context curățat pentru Thread ID: 3

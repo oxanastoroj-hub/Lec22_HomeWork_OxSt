@@ -1,0 +1,1 @@
+{"uuid":"736ef131-7beb-41b3-a8bd-42706f755817","name":"com.hapifyme.api.tests.UserLifecycleTest","children":["686872aa-0334-42e4-b29a-c2cfefbe0558"],"befores":[{"name":"setup","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1768757895252,"stop":1768757896438}],"afters":[],"start":1768757895153,"stop":1768757903004}
