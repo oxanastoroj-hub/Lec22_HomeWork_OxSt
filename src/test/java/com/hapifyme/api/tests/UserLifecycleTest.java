@@ -3,23 +3,16 @@ package com.hapifyme.api.tests;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.qameta.allure.*;
-import io.restassured.RestAssured;
-
 import com.hapifyme.api.models.*;
 import com.hapifyme.api.utils.*;
-
-import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
-import static org.hamcrest.Matchers.containsString;
 
 @Epic("hapifyMe Project")
 @Feature("e2e User LifeCycle module")
-
 public class UserLifecycleTest extends BaseTest {
-
     private String email;
     private final String password = "Test1234!";
     private String apiKey;
