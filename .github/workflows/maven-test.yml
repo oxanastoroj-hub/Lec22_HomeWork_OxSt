@@ -1,0 +1,54 @@
+name: hapifyMe Automated Tests
+
+# Când să ruleze robotul?
+on:
+  push:
+    branches: [ "main" ] # La fiecare push pe main
+  pull_request:
+    branches: [ "main" ] # La fiecare Pull Request
+
+permissions:
+  contents: write  # NECESAR pentru a putea publica raportul pe gh-pages
+  pages: write
+  id-token: write
+
+jobs:
+  test-execution:
+    runs-on: ubuntu-latest # Sistemul de operare al robotului
+
+    steps:
+      # Pasul 1: Descarcă codul nostru din repo
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      # Pasul 2: Instalează Java 21 (necesar pentru Maven)
+      - name: Set up JDK 21
+        uses: actions/setup-java@v3
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+
+      # Pasul 3: Rulează testele (exact comanda învățată!)
+      - name: Run Tests with Maven
+        run: mvn clean test
+        continue-on-error: true # Continuăm execuția chiar dacă testele pică, pentru a genera raportul
+
+      # Pasul 4: Generează Istoricul Allure
+      - name: Allure Report History
+        uses: simple-elf/allure-report-action@master
+        if: always()
+        id: allure-report
+        with:
+          allure_results: target/allure-results
+          gh_pages: gh-pages
+          allure_report: allure-report
+          allure_history: allure-history
+
+      # Pasul 5: Publică Raportul pe GitHub Pages
+      - name: Deploy Report to GitHub Pages
+        if: always()
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: allure-history
