@@ -9,6 +9,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import com.hapifyme.api.utils.TestContext;
 import java.lang.reflect.Method;
+import com.hapifyme.api.utils.ConfigManager;
 
 public class BaseTest {
     protected static RequestSpecification requestSpec;
@@ -17,7 +18,7 @@ public class BaseTest {
     @BeforeClass
     public void setup() {
          requestSpec = new RequestSpecBuilder()
-                .setBaseUri("https://test.hapifyme.com/api")
+                .setBaseUri(ConfigManager.BASE_URL)
                 .setContentType("application/json")
                 .addHeader("Accept", "application/json")
                 .build();
@@ -30,7 +31,7 @@ public class BaseTest {
         logger.info("Începere Test: " + method.getName());
         // Adăugăm ID-ul thread-ului pentru a putea depana execuția paralelă
         logger.info("Running on Thread ID: " + Thread.currentThread().getId());
-        logger.info("Base URL: https://test.hapifyme.com");
+        logger.info("Base URL: {}", ConfigManager.BASE_URL);
         logger.info("========================================");
     }
 
