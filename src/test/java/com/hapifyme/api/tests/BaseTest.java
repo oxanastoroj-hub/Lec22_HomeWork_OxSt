@@ -40,7 +40,7 @@ public class BaseTest {
         // Critic pentru paralelizare: Curățăm datele din ThreadLocal
         // Dacă nu facem asta, următorul test care refolosește acest thread ar putea vedea date vechi
         TestContext.clear();
-        logger.debug("Context curățat pentru Thread ID: " + Thread.currentThread().getId());
+        logger.debug("Context curațat pentru Thread ID: " + Thread.currentThread().getId());
     }
 
 }

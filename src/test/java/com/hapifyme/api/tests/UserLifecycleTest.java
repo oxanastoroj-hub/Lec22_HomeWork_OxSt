@@ -24,7 +24,7 @@ public class UserLifecycleTest extends BaseTest {
     @Severity(SeverityLevel.BLOCKER)
     @Description("This test registrates a new user and returns apiKey, user ID and user Name for the next steps ")
     @Story("JIRA-01. I want to create a new user, log in and delete it")
-    @Step("username with email generated and password={1}")
+    @Step("Step1: Username with Email generated and Password={1}")
     public void registerUser() {
         email = DataGenerator.generateUniqueEmail();
 
@@ -65,7 +65,7 @@ public class UserLifecycleTest extends BaseTest {
         logger.debug("api key: " + apiKey);
     }
 
-    @Test (priority = 2)
+    @Test (priority = 2, dependsOnMethods = "registerUser")
     @Step("Step 2: Confirm email for {0}")
     public void waitForConfirmation() {
         String confirmUrl = ConfigManager.CONFIRM_EMAIL + apiKey;
