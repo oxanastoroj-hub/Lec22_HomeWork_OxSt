@@ -10,7 +10,7 @@ public class LoginRequest {
         this.password = password;
     }
 
-    // Getters și Setters (obligatorii pentru Jackson)
+    // Getters și Setters (obligatorii pentru Jackson).
     public String getUsername() { return username; }
     public void setUsername(String username) { this.username = username; }  //corrected
     public String getPassword() { return password; }
